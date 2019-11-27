@@ -1,0 +1,28 @@
+{
+  "name": "nitmis",
+  "version": "1.0.0",
+  "description": "Nit Mis Vue frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalesh13/nitmis.git"
+  },
+  "keywords": [
+    "nit",
+    "tarang",
+    "mis"
+  ],
+  "author": "Kalesh Kaladharan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kalesh13/nitmis/issues"
+  },
+  "homepage": "https://github.com/kalesh13/nitmis#readme",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.3"
+  }
+}
