@@ -20,7 +20,8 @@ from nitmis_admin.controllers.login import Login
 
 urlpatterns = [
     path('admin/', Dashboard.as_view(), name='dashboard'),
-    path('admin/login/',  Login.as_view(), name='login'),
-    path('admin/<str:page>/',  Dashboard.as_view(), name='page'),
-    path('admin/<str:page>/<int:id>',  Dashboard.as_view(), name='item'),
+    path('admin/login/', Login.as_view(), name='login'),    
+    path('admin/register/', 'base.html', name='register'),
+    path('admin/<str:page>/', Dashboard.as_view(), name='page'),
+    path('admin/<str:page>/<int:id>', Dashboard.as_view(), name='item'),
 ]

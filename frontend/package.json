@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "description": "Nit Mis Vue frontend",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kalesh13/nitmis.git"
-  },
   "keywords": [
     "nit",
     "tarang",
@@ -17,12 +10,39 @@
   ],
   "author": "Kalesh Kaladharan",
   "license": "MIT",
+  "devDependencies": {
+    "animate.css": "^3.7.0",
+    "axios": "^0.19.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "bootstrap": "^4.3.1",
+    "cross-env": "^5.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "laravel-mix": "^3.0.0",
+    "moment-timezone": "^0.5.21",
+    "popper.js": "^1.12",
+    "pug": "^2.0.3",
+    "vue": "^2.6.10",
+    "vue-bootstrap-datetimepicker": "^5.0.0",
+    "vue-multiselect": "^2.1.6",
+    "vue-router": "^3.1.3",
+    "vuex": "^3.1.1",
+    "vue2-editor": "^2.6.6",
+    "z-vueplates": "^1.1.0"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalesh13/nitmis.git"
+  },
   "bugs": {
     "url": "https://github.com/kalesh13/nitmis/issues"
   },
-  "homepage": "https://github.com/kalesh13/nitmis#readme",
-  "dependencies": {
-    "vue": "^2.6.10",
-    "vue-router": "^3.1.3"
-  }
+  "homepage": "https://github.com/kalesh13/nitmis#readme"
 }

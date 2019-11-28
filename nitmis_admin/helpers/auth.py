@@ -1,34 +1,100 @@
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from nitmis_admin.helpers.json import JsonCheck
+from typing import Optional
+from django.http import HttpResponseRedirect, JsonResponse
+from nitmis_admin.helpers.request import RequestCheck
+from nitmis_admin.models import User, Tokens
 
 
 class Auth:
-    def check(self, request):
-        user = self.user(request)
+    """
+    Handles all the authentication related tasks. A user
+    is assumed to be authenticated if the request contains a
+    _token field and this token has not expired. During login
+    process, we create a new token and send it as response to the
+    user. User has to send this token with all requests. To logout
+    a user, simply update the expiry of the token in database.
 
-        return user is not None
+    The logged in user can be retreived by checking the presence of
+    _token and its associated user.
+    """
 
-    def user(self, request):
-        if(request.POST.get('_token', '')):
-            return True
+    def login(self, request) -> JsonResponse:
+        pass
 
-    def hasRole(self, request, role=None):
-        if(role is None):
-            return True
+    def user(self, request) -> Optional[User]:
+        """
+        Gets the logged in user model based on the
+        request token. User will be returned only if the
+        token has not expired and is valid.
+        """
+        token_model = self.token_model_from_request(request)
+        if token_model:
+            # If token_model is valid return the user associated
+            # with it.
+            return token_model.user
+        return None
 
-        user = self.user(request)
+    def token_model_from_request(self, request) -> Optional[Tokens]:
+        """
+        Returns the token model from the request
+        """
+        token = self.token_from_request(request)
+        if token:
+            token_models = Tokens.from_token(token)
+            # If token_model is valid return the user associated
+            # with it.
+            if token_models and token_models.exists():
+                return token_models[0]
+        return None
+
+    def token_from_request(self, request) -> Optional[str]:
+        """
+        Checks for the presence of token in headers, cookies
+        and parameters. This token determines whether a user
+        is authorized to make requests or not.
+        """
+        # Check if the request contains token in cookies
+        token = request.COOKIES.get('_token', '')
+        if token:
+            return token
+
+        # Check if the request contains token in query
+        token = request.GET.get('_token', '')
+        if token:
+            return token
+
+        # Check if the request contains token in POST data
+        token = request.POST.get('_token', '')
+        if token:
+            return token
+
+        # Check if the request contains token in the
+        # Authorization header.
+        token = RequestCheck.bearer_token(request)
+        if token:
+            return token
+        return None
+
+    def logout(self, request) -> None:
+        """
+        Logs out an authenticated user by expiring
+        the user access token
+        """
+        token_model = self.token_model_from_request(request)
+        if token_model:
+            token_model.expire()
 
 
 # -------------------------------------------------------------
 # Decorators
 # -------------------------------------------------------------
 #
-# Decorator for Auth check. Simply putting Authenticated as a
-# decorator over the controller function checks for
-# the request authentication status
 
-
-def Authenticated(roles=None):
+def authenticated(roles=None):
+    """
+    Decorator for Auth check. Simply putting Authenticated as a
+    decorator over the controller function checks for
+    the request authentication status
+    """
     def wrapper(func):
         def function_executer(*args, **kwargs):
             # Authentication handler
@@ -36,19 +102,20 @@ def Authenticated(roles=None):
             # Get the currently authenticated user from the
             # request. args[1] holds the request object
             user = auth.user(args[1])
-            expectsJson = JsonCheck.expectsJson(args[1])
+            expects_json = RequestCheck.expects_json(args[1])
             #
             # Check if the auth check returned a valid user or not.
             # If not then return a 401 unauthenticated error or redirect
             # to the login page
             if not user:
-                if expectsJson:
+                if expects_json:
                     return JsonResponse({"message": "Unauthenticated"}, status=401)
-                else:
-                    return HttpResponseRedirect('login')
+                return HttpResponseRedirect('login')
 
             # Check if the authenticated user has the permission
             # to process the function
+            if not user.has_role(roles):
+                return JsonResponse({"message": "You don't have access to this section"}, status=403)
 
             # At this point the user authentication and user access
             # levels have been successfully verified. Proceed with the

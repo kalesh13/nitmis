@@ -1,0 +1,62 @@
+/*
+|------------------------------------------------------
+| Variables
+|------------------------------------------------------
+*/
+//Colors
+$theme-blue: #2650af;
+$theme-dark-blue:#0f2350;
+$text-black: #3c3d42;
+
+$link-color:$theme-blue;
+$link-hover-color:$theme-dark-blue;
+
+// Body
+$body-bg: #f2f4f6;
+$body-border: #e6e6e8;
+$body-color: $text-black;
+
+$box-title-bg:#eaeaea;
+
+// Typography
+$font-family-sans-serif: "Poppins",
+sans-serif,
+sans-serif;
+$font-size-base: 0.8rem;
+$line-height-base: 1.6;
+
+@import '~font-awesome/scss/font-awesome';
+@import '~animate.css/animate.min.css';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+html {
+    position: relative;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    letter-spacing: 0.05em;
+}
+
+a {
+    text-decoration: none;
+    color: $link-color;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+%ul-style {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+ul {
+    @extend %ul-style;
+}
