@@ -15,7 +15,7 @@ mix.setPublicPath('public');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .extract(['vue', 'vue-router', 'axios', 'jquery'])
+    .extract(['vue', 'vue-router', 'axios', 'jquery', 'popper.js'])
     .webpackConfig({
         output: {
             publicPath: '/',

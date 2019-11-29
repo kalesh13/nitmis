@@ -1,9 +1,6 @@
 from django.urls import path
-from nitmis_admin.controllers import dashboard
+from nitmis_admin.controllers.events import EventsController
 
-'''
-Register different admin routes.
-'''
 urlpatterns = [
-    path('', dashboard.index, name='dashboard'),
+    path('events', EventsController.as_view(), name='events'),
 ]

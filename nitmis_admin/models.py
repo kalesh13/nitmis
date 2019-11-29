@@ -117,7 +117,7 @@ class EventParticipant(models.Model):
     EventParticipant holds all the event participant details. is_team
     is set to true, if the participant is a team and the corresponding
     team_id is stored. Set is_team to false, if the participant is not
-    a user. 
+    a user.
     """
     id = models.AutoField(primary_key=True)
     event = models.ForeignKey(Events, on_delete=models.CASCADE)

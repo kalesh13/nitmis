@@ -16,5 +16,5 @@ class Login(View):
         Otherwise, the request is redirected to a signup page.
         '''
         if not Roles.objects.filter(role__iexact='Administrator').exists():
-            return HttpResponseRedirect('register')
+            return HttpResponseRedirect('register_admin')
         return render(request, 'base.html')

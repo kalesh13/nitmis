@@ -1,9 +1,9 @@
-webpackJsonp([4],{
+webpackJsonp([2],{
 
-/***/ 210:
+/***/ 211:
 /***/ (function(module, exports, __webpack_require__) {
 
-var normalizeComponent = __webpack_require__(211)
+var normalizeComponent = __webpack_require__(214)
 /* script */
 var __vue_script__ = null
 /* template */
@@ -24,14 +24,14 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/components/admin/index.vue"
+Component.options.__file = "resources/js/components/login/resetRequest.vue"
 
 module.exports = Component.exports
 
 
 /***/ }),
 
-/***/ 211:
+/***/ 214:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */

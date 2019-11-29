@@ -25,7 +25,7 @@ SECRET_KEY = 'cai7au=%&!7zrt*9@wem=!1pr97&!lwx2(_^q$e7)wft((-6#c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -118,4 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'frontend', 'public')
+
 STATIC_URL = '/static/'
+
+CSRF_HEADER_NAME = 'X-CSRFToken'

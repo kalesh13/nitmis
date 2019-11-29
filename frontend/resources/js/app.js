@@ -9,6 +9,7 @@ require('./bootstrap');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import helper from "./helper";
+import store from "./store";
 
 Vue.use(VueRouter);
 Vue.use(helper);
@@ -21,9 +22,9 @@ const router = new VueRouter({
             component: () => import('./components/login/login')
         },
         {
-            path: '/register',
-            name: 'register',
-            component: () => import('./components/login/register')
+            path: '/admin/register',
+            name: 'adminRegister',
+            component: () => import('./components/admin/register')
         },
         {
             path: '/password/reset',
@@ -52,6 +53,7 @@ router.afterEach(() => {
 const app = new Vue({
     el: '#app',
     router: router,
+    store: store,
     data: {
         is_loading: true
     }
