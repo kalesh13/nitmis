@@ -1,4 +1,4 @@
-webpackJsonp([5],[
+webpackJsonp([6],[
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18024,31 +18024,37 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
         path: '/login',
         name: 'login',
         component: function component() {
-            return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 209));
+            return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 210));
         }
     }, {
         path: '/admin/register',
         name: 'adminRegister',
         component: function component() {
-            return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 210));
+            return __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 211));
+        }
+    }, {
+        path: '/register',
+        name: 'userRegister',
+        component: function component() {
+            return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 209));
         }
     }, {
         path: '/password/reset',
         name: 'reset',
         component: function component() {
-            return __webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 211));
+            return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 212));
         }
     }, {
         path: '/password/reset/:token',
         name: 'resetForm',
         component: function component() {
-            return __webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 212));
+            return __webpack_require__.e/* import() */(5).then(__webpack_require__.bind(null, 213));
         }
     }, {
-        path: '/admin',
-        name: 'admin',
+        path: '/dash',
+        name: 'dashboard',
         component: function component() {
-            return __webpack_require__.e/* import() */(4).then(__webpack_require__.bind(null, 213));
+            return __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 214));
         }
     }]
 });
@@ -18084,10 +18090,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * code may be modified to fit the specific needs of your application.
  */
 try {
-    window.$ = window.jQuery = __webpack_require__(4);
-    window.moment = __WEBPACK_IMPORTED_MODULE_0_moment_timezone___default.a;
+  window.$ = window.jQuery = __webpack_require__(4);
+  window.moment = __WEBPACK_IMPORTED_MODULE_0_moment_timezone___default.a;
 
-    __webpack_require__(166);
+  __webpack_require__(166);
 } catch (e) {}
 
 /**
@@ -18098,14 +18104,8 @@ try {
 
 window.axios = __webpack_require__(138);
 
-var token = document.body.querySelector('input[name="csrfmiddlewaretoken"]');
-
-if (token) {
-    window.axios.defaults.headers.common['X-CSRFToken'] = token.getAttribute('value');
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
-
+window.axios.defaults.xsrfCookieName = 'csrftoken';
+window.axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
@@ -24853,13 +24853,27 @@ exports.default = TableHandler;
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
 
+var stored_token = JSON.parse(window.localStorage.getItem("token"));
+
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     state: {
-        token: {}
+        token: stored_token || {}
+    },
+    getters: {
+        isLoggedIn: function isLoggedIn(state) {
+            return state.token.token;
+        },
+        userName: function userName(state) {
+            return state.token.user.name || "Guest";
+        },
+        thisYear: function thisYear() {
+            return new Date().getFullYear();
+        }
     },
     mutations: {
         setToken: function setToken(state, data) {
             state.token = data;
+            window.localStorage.setItem('token', JSON.stringify(data));
         }
     }
 });

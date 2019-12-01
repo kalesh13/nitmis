@@ -1,0 +1,18 @@
+div(class="nav" v-if="$store.getters.isLoggedIn")
+    ul(class="central")
+        li(class="item selected")
+            a(href="/dash/")
+                div
+                    span(class="fa fa-desktop mr-2")
+                    | Dashboard
+        li(class="item")
+            a(href="/dash/events")
+                div
+                    span(class="fa fa-calendar-o mr-2")
+                    | Events
+        li(class="item")
+            a(href="/dash/users")
+                div
+                    span(class="fa fa-users mr-2")
+                    | Users
+

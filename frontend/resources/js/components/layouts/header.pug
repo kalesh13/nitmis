@@ -1,0 +1,13 @@
+div(class="header")
+    div(class="central")
+        a(href="/dash" class="logo")
+            img(src="/images/logo.png")
+        div(class="auth")
+            template(v-if="$store.getters.isLoggedIn")
+                div(class="icon mr-3")
+                div(class="name" v-text="$store.getters.userName")
+            a(v-else href="/login")
+                span(class="fa fa-lock mr-2")
+                span Login/Register
+        
+    

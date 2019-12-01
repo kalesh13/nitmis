@@ -45,5 +45,6 @@
   "bugs": {
     "url": "https://github.com/kalesh13/nitmis/issues"
   },
-  "homepage": "https://github.com/kalesh13/nitmis#readme"
+  "homepage": "https://github.com/kalesh13/nitmis#readme",
+  "dependencies": {}
 }

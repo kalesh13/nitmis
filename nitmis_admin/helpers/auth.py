@@ -1,7 +1,9 @@
 from typing import Optional
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import JsonResponse
+from django.shortcuts import redirect
 from nitmis_admin.helpers.request import RequestCheck
 from nitmis_admin.models import User, Tokens
+from nitmis_admin.serializers.TokenSerializer import TokenSerializer
 
 
 class Auth:
@@ -18,7 +20,22 @@ class Auth:
     """
 
     def login(self, request) -> JsonResponse:
-        pass
+        token = self.issue_token(request)
+
+        if token:
+            response = JsonResponse(TokenSerializer(token).data)
+            response.set_cookie('_token', token.token)
+            return response
+        return JsonResponse({"errors": {"password": "Invalid credentials"}}, status=400)
+
+    def issue_token(self, request) -> Tokens:
+        email = request.data.get('email', '')
+        password = request.data.get('password', '')
+
+        user = User.objects.get(email=email, password=password)
+
+        if user:
+            return Tokens.new_token(user)
 
     def user(self, request) -> Optional[User]:
         """
@@ -38,6 +55,8 @@ class Auth:
         Returns the token model from the request
         """
         token = self.token_from_request(request)
+        print("Printing token")
+        print(token)
         if token:
             token_models = Tokens.from_token(token)
             # If token_model is valid return the user associated
@@ -110,7 +129,7 @@ def authenticated(roles=None):
             if not user:
                 if expects_json:
                     return JsonResponse({"message": "Unauthenticated"}, status=401)
-                return HttpResponseRedirect('login')
+                return redirect('login')
 
             # Check if the authenticated user has the permission
             # to process the function

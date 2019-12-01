@@ -1,4 +1,5 @@
 import datetime
+import uuid
 from django.db import models
 
 # Create your models here.
@@ -58,6 +59,14 @@ class Tokens(models.Model):
         self.save()
 
     @staticmethod
+    def new_token(user):
+        '''
+        '''
+        tok_string = str(uuid.uuid4())
+        expiry = datetime.datetime.now() + datetime.timedelta(hours=12)
+        return Tokens.objects.create(user=user, token=tok_string, expiry=expiry)
+
+    @staticmethod
     def from_token(token):
         """
         Returns the Token model from the token
@@ -65,7 +74,7 @@ class Tokens(models.Model):
         expiry.
         """
         current_time = datetime.datetime.now()
-        return Tokens.objects.fiter(token__exact=token).filter(expiry__lt=current_time)
+        return Tokens.objects.filter(token__exact=token).filter(expiry__lt=current_time)
 
 
 class Stages(models.Model):

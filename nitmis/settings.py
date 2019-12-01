@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'nitmis_admin',
 ]
 
@@ -121,5 +122,3 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'frontend', 'public')
 
 STATIC_URL = '/static/'
-
-CSRF_HEADER_NAME = 'X-CSRFToken'

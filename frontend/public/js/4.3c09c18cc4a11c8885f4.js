@@ -1,9 +1,9 @@
-webpackJsonp([3],{
+webpackJsonp([4],{
 
-/***/ 210:
+/***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
-var normalizeComponent = __webpack_require__(212)
+var normalizeComponent = __webpack_require__(215)
 /* script */
 var __vue_script__ = null
 /* template */
@@ -24,14 +24,14 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/components/login/newPassword.vue"
+Component.options.__file = "resources/js/components/login/resetRequest.vue"
 
 module.exports = Component.exports
 
 
 /***/ }),
 
-/***/ 212:
+/***/ 215:
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */

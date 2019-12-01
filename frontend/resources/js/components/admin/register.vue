@@ -1,17 +1,12 @@
 <template lang="pug">
-    div
-        div(class="title") Admin Registration
-        register-form(url="/admin/register")
+    register-layout(title="Admin Registration" url="/admin/register/")
 </template>
 
 <script>
-import RegisterForm from "../user/register_form";
+import RegisterLayout from "../user/register";
 
 export default {
-  name: "admin_register",
-  data: function() {
-    return {};
-  },
-  components: { RegisterForm }
+  name: "user_register",
+  components: { RegisterLayout }
 };
 </script>

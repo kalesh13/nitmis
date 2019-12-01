@@ -27,6 +27,11 @@ const router = new VueRouter({
             component: () => import('./components/admin/register')
         },
         {
+            path: '/register',
+            name: 'userRegister',
+            component: () => import('./components/user/register')
+        },
+        {
             path: '/password/reset',
             name: 'reset',
             component: () => import('./components/login/resetRequest')
@@ -37,8 +42,8 @@ const router = new VueRouter({
             component: () => import('./components/login/newPassword')
         },
         {
-            path: '/admin',
-            name: 'admin',
+            path: '/dash',
+            name: 'dashboard',
             component: () => import('./components/admin/index')
         },
     ]

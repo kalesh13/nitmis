@@ -23,13 +23,13 @@ from nitmis_admin.controllers.login import Login
 from nitmis_admin.controllers.register import Register, AdminRegister
 
 urlpatterns = [
-    path('admin/', Dashboard.as_view(), name='dashboard'),
-    path('admin/login/', Login.as_view(), name='login'),
-    path('admin/register/', AdminRegister.as_view(), name='register_admin'),
-    path('admin/<str:page>/', Dashboard.as_view(), name='page'),
-    path('admin/<str:page>/<int:id>', Dashboard.as_view(), name='item'),
+    path('dash/', Dashboard.as_view(), name='dashboard'),
+    path('login/', Login.as_view(), name='login'),
+    path('register/', Register.as_view(), name='register'),
+    path('dash/register/', AdminRegister.as_view(), name='register_admin'),
+    path('dash/<str:page>/', Dashboard.as_view(), name='page'),
+    path('dash/<str:page>/<int:id>', Dashboard.as_view(), name='item'),
     path('api/', include('nitmis_admin.urls')),
-    path('user/register/', Register.as_view(), name='register'),
     #path(r'^(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT})
 ]
 
