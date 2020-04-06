@@ -6,7 +6,7 @@ from nitmis_admin.helpers.auth import authenticated
 class Dashboard(View):
     '''Render the dashboard layout'''
 
-    #@authenticated()
+    @authenticated()
     def get(self, request, page=None, id=None):
         '''
         Sends base html document to the authenticated user. If the
