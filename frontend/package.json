@@ -19,7 +19,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.0",
     "laravel-mix": "^5.0.4",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "moment-timezone": "^0.5.28",
     "popper.js": "^1.16.1",
     "pug": "^2.0.3",
