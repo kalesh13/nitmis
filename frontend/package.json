@@ -13,7 +13,7 @@
   "devDependencies": {
     "@rheas/vuer": "^1.1.1",
     "animate.css": "^3.7.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "bootstrap": "^4.5.0",
     "cross-env": "^5.1",
