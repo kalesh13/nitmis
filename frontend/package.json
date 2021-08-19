@@ -11,6 +11,7 @@
   "author": "Kalesh Kaladharan",
   "license": "MIT",
   "devDependencies": {
+    "@rheas/vuer": "^1.1.1",
     "animate.css": "^3.7.0",
     "axios": "^0.19.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -28,8 +29,7 @@
     "vue-multiselect": "^2.1.6",
     "vue-router": "^3.3.4",
     "vue2-editor": "^2.6.6",
-    "vuex": "^3.5.1",
-    "z-vueplates": "^1.1.0"
+    "vuex": "^3.5.1"
   },
   "scripts": {
     "dev": "npm run development",
@@ -45,6 +45,5 @@
   "bugs": {
     "url": "https://github.com/kalesh13/nitmis/issues"
   },
-  "homepage": "https://github.com/kalesh13/nitmis#readme",
-  "dependencies": {}
+  "homepage": "https://github.com/kalesh13/nitmis#readme"
 }
