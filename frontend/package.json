@@ -23,7 +23,7 @@
     "lodash": "^4.17.19",
     "moment-timezone": "^0.5.31",
     "popper.js": "^1.16.1",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "vue": "^2.6.11",
     "vue-bootstrap-datetimepicker": "^5.0.0",
     "vue-multiselect": "^2.1.6",
