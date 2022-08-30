@@ -21,7 +21,7 @@
     "jquery": "^3.5.1",
     "laravel-mix": "^5.0.4",
     "lodash": "^4.17.19",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "popper.js": "^1.16.1",
     "pug": "^3.0.1",
     "vue": "^2.6.11",
